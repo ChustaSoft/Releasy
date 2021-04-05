@@ -11,8 +11,12 @@ namespace ChustaSoft.Releasy.FileParser
 
         private const string STARTING_TEXT = "## [Releases]";
         private const string RELEASE_START_TEXT = "\n## ";
-
-
+        private const string HEADER_INFO_SEPARATOR = " - ";
+        private const char NEW_LINE = '\n';
+        private const char RETURN = '\r';
+        private const char HEADER_VERSION_START = '[';
+        private const char HEADER_VERSION_END = ']';
+        private const char EMPTY_CHARACTER = ' ';
         private readonly FileParserSettings _fileParserSettings;
 
 
@@ -41,7 +45,19 @@ namespace ChustaSoft.Releasy.FileParser
 
         internal async Task<string> ParseReleaseText(string releaseText) 
         {
+
+
             throw new NotImplementedException();
+        }
+
+        internal (string Version, DateTime Date) GetReleaseHeader(string releaseText) 
+        {
+            var headerText = releaseText.Substring(0, releaseText.IndexOf(NEW_LINE));
+            var lines = headerText.Split(HEADER_INFO_SEPARATOR);
+            var version = lines[0].Replace(HEADER_VERSION_START, EMPTY_CHARACTER).Replace(HEADER_VERSION_END, EMPTY_CHARACTER).Trim();
+            var date = DateTime.Parse(lines[1].Trim());
+
+            return (version, date);
         }
 
     }
