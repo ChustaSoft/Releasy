@@ -34,9 +34,13 @@ namespace ChustaSoft.Releasy.FileParser
 
         public async Task<IEnumerable<ReleaseInfo>> Load()
         {
+            var releases = new List<ReleaseInfo>();
             var releaseTextLines = await GetReleaseLines();
 
-            throw new NotImplementedException();
+            for (int i = 1; i < releaseTextLines.Length; i++)
+                releases.Add(ParseReleaseText(releaseTextLines[i]));
+
+            return releases;
         }
 
 
@@ -49,11 +53,12 @@ namespace ChustaSoft.Releasy.FileParser
             return releasesTextList;
         }
 
-        internal async Task<string> ParseReleaseText(string releaseText) 
+        internal ReleaseInfo ParseReleaseText(string releaseText) 
         {
+            var headerInfo = GetReleaseHeader(releaseText);
+            var changes = GetChanges(releaseText);
 
-
-            throw new NotImplementedException();
+            return new ReleaseInfo(headerInfo.Version, headerInfo.Date, changes);
         }
 
         internal (string Version, DateTime Date) GetReleaseHeader(string releaseText) 
