@@ -17,7 +17,7 @@ Implementations:
 	- Allows easily to keep a changelog documented, independently from technical or functional members.
 	- This mechanism allow the project to use the same changelog to be used as reference information inside the project, avoiding duplicity of information.
 
-- _More new implementations would be welcome (SQL? Mongo? External provider? :) )_
+- _More new implementations would be welcome (SQL? Mongo? External provider?)_
 	
 
 ## Getting started:
@@ -53,8 +53,12 @@ Implementations:
 	 - */api/Release/{identifier}*: Provide information for an speceific release version
 	 - */api/Release/from-identifier/{identifier}*: Given a version, provide all release details about all newer versions
 	 - ​*/api​/Release​/from-date​/{dateFrom}*: Provide all the release details from an specific date
-	 
-  NOTE: Swagger or Postman is recommended in development process, in order to facilitate seeing results, but not mandatory.
+
+### Examples and testing	
+ 
+- Do you still need an example? [Here](https://github.com/ChustaSoft/Releasy/tree/main/ChustaSoft.Releasy/ChustaSoft.Releasy.AspNetExample) you can find it.
+- Swagger or Postman is recommended in development process, in order to facilitate seeing results, but not mandatory.
+
 
 *Thanks for using and contributing*
 ---
