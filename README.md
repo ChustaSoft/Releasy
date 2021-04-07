@@ -16,6 +16,8 @@ Implementations:
 	- Implementation based on format documented by _[Keep a Changelog](https://keepachangelog.com/en/1.1.0/)_.
 	- Allows easily to keep a changelog documented, independently from technical or functional members.
 	- This mechanism allow the project to use the same changelog to be used as reference information inside the project, avoiding duplicity of information.
+
+- _More new implementations would be welcome (SQL? Mongo? External provider? :) )_
 	
 
 ## Getting started:
