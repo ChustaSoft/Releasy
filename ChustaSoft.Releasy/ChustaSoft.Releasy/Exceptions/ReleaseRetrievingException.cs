@@ -10,5 +10,6 @@ namespace ChustaSoft.Releasy
         public ReleaseRetrievingException(Exception innerException) 
             : base(ERROR_MESSAGE, innerException)
         { }
+
     }
 }

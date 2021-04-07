@@ -106,7 +106,7 @@ namespace ChustaSoft.Releasy.FileParser
 
             for (int i = 1; i < allLines.Length; i++)
                 if(allLines[i].Length > MIN_CHANGETYPE_LINE_LENGTH)
-                    yield return allLines[i];
+                    yield return allLines[i].TrimStart().TrimEnd();
         }
 
     }
