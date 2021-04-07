@@ -18,7 +18,7 @@ namespace ChustaSoft.Releasy.FileParser.Tests
             ServiceUnderTest = new ReleaseFileParser(new FileParserSettings(FileParserConstants.DEFAULT_CHANGELOG_FILENAME));
         }
 
-
+      
         [Test]
         public async Task Given_changelog_When_GetReleaseLines_Then_ReleaseLinesParsed()
         {
@@ -193,6 +193,14 @@ namespace ChustaSoft.Releasy.FileParser.Tests
             Assert.AreEqual(0, version001.Deprecations.Count());
             Assert.AreEqual(0, version001.Fixes.Count());
             Assert.AreEqual(0, version001.Secured.Count());
+        }
+
+        [Test]
+        public void Given_Wrongchangelog_When_Load_Then_ReleaseRetrievingExceptionThrown()
+        {
+            ServiceUnderTest = new ReleaseFileParser(new FileParserSettings("wrongfile.md"));
+
+            Assert.ThrowsAsync<ReleaseRetrievingException>(() => ServiceUnderTest.Load());
         }
 
     }

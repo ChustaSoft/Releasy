@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChustaSoft.Releasy.Exceptions
+namespace ChustaSoft.Releasy
 {
     public class ReleaseRetrievingException : Exception
     {

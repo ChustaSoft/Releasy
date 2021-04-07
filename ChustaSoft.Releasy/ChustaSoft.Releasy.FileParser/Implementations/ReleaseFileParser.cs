@@ -34,13 +34,20 @@ namespace ChustaSoft.Releasy.FileParser
 
         public async Task<IEnumerable<ReleaseInfo>> Load()
         {
-            var releases = new List<ReleaseInfo>();
-            var releaseTextLines = await GetReleaseLines();
+            try
+            {
+                var releases = new List<ReleaseInfo>();
+                var releaseTextLines = await GetReleaseLines();
 
-            for (int i = 1; i < releaseTextLines.Length; i++)
-                releases.Add(ParseReleaseText(releaseTextLines[i]));
+                for (int i = 1; i < releaseTextLines.Length; i++)
+                    releases.Add(ParseReleaseText(releaseTextLines[i]));
 
-            return releases;
+                return releases;
+            }
+            catch (Exception ex)
+            {
+                throw new ReleaseRetrievingException(ex);
+            }
         }
 
 
