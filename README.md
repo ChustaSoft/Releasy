@@ -1,7 +1,7 @@
 # Releasy
 
 ## Description
----
+
 Releasy is a tool for managing Release and versioning information for .Net Core applications.
 
 It provides an abstract mechanims for retrieving information about Releases such as Version, Notes and Release Date
@@ -19,18 +19,17 @@ Implementations:
 	
 
 ## Getting started:
----
 
 1. Install the NuGet package for the required implementation, for example ChustaSoft.Releasy.FileParser
-  - Install-Package ChustaSoft.Releasy.FileParser
+	- Install-Package ChustaSoft.Releasy.FileParser
   
 2. Place and manage a changelog.md file inside the solution, and mark the resource as "Copy always" inside VS Solution
-  - Format reference [here](https://keepachangelog.com/en/1.1.0/)
+	- Format reference [here](https://keepachangelog.com/en/1.1.0/)
 
 3. Configuration at startup
-  - `services.AddReleasy().FromFile();`
-    By default, it will look for a changelog.md file placed in the same solution, if another name is required, could be added in the same extension method:
-	`services.AddReleasy().FromFile("otherfilename.md");`
+	- `services.AddReleasy().FromFile();`
+	By default, it will look for a changelog.md file placed in the same solution, if another name is required, could be added in the same extension method:
+	- `services.AddReleasy().FromFile("otherfilename.md");`
 
 4.1 Using Services:
 
@@ -43,17 +42,17 @@ Implementations:
 4.2 Using AspNet package
 
   1. Install the AspNet package: 
-    - Install-Package ChustaSoft.Releasy.AspNet
+     - Install-Package ChustaSoft.Releasy.AspNet
   2. Add required configuration using the same ImvcBuilder from AspNetCore:
-    - `services.AddMvc().AddReleaseController();`
+     - `services.AddMvc().AddReleaseController();`
   3. Once done, a REST controller will be added to the project giving the same functionalities described for the Service, using the same configured 
      authentication in the project, with the following routes:
-	 - /api/Release: Provide all release versioning entries
-	 - /api/Release/{identifier}: Provide information for an speceific release version
-	 - /api/Release/from-identifier/{identifier}: Given a version, provide all release details about all newer versions
-	 - ​/api​/Release​/from-date​/{dateFrom}: Provide all the release details from an specific date
+	 - */api/Release*: Provide all release versioning entries
+	 - */api/Release/{identifier}*: Provide information for an speceific release version
+	 - */api/Release/from-identifier/{identifier}*: Given a version, provide all release details about all newer versions
+	 - ​*/api​/Release​/from-date​/{dateFrom}*: Provide all the release details from an specific date
 	 
-
+  NOTE: Swagger or Postman is recommended in development process, in order to facilitate seeing results, but not mandatory.
 
 *Thanks for using and contributing*
 ---
