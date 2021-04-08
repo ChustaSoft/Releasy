@@ -60,10 +60,10 @@ Implementations:
      - `services.AddMvc().AddReleaseController();`
   3. Once done, a REST controller will be added to the project giving the same functionalities described for the Service, using the same configured 
      authentication in the project, with the following routes:
-	 - */api/Release*: Provide all release versioning entries
-	 - */api/Release/{identifier}*: Provide information for an speceific release version
-	 - */api/Release/from-identifier/{identifier}*: Given a version, provide all release details about all newer versions
-	 - ​*/api​/Release​/from-date​/{dateFrom}*: Provide all the release details from an specific date
+	 - /api/Release: Provide all release versioning entries
+	 - /api/Release/{identifier}: Provide information for an speceific release version
+	 - /api/Release/from-identifier/{identifier}: Given a version, provide all release details about all newer versions
+	 - ​/api​/Release​/from-date​/{dateFrom}: Provide all the release details from an specific date
 
 ### Examples and testing	
  
