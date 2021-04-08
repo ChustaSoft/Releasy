@@ -23,6 +23,10 @@ namespace ChustaSoft.Releasy.AspNetExample.Controllers
         }
 
 
+        /// <summary>
+        /// Get all Release information in the system
+        /// </summary>
+        /// <returns>Collection with all releases information</returns>
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
@@ -40,6 +44,11 @@ namespace ChustaSoft.Releasy.AspNetExample.Controllers
             }
         }
 
+        /// <summary>
+        /// Get a single Release by it's identifier
+        /// </summary>
+        /// <param name="identifier">Identifier to be filtered</param>
+        /// <returns>Single Release retrived by it's identifier</returns>
         [HttpGet("{identifier}")]
         public async Task<IActionResult> GetAsync(string identifier)
         {
@@ -58,6 +67,11 @@ namespace ChustaSoft.Releasy.AspNetExample.Controllers
 
         }
 
+        /// <summary>
+        /// Filter all newer releases information from an existing identifier
+        /// </summary>
+        /// <param name="identifier">Starting Identifier from</param>
+        /// <returns>Collection with the newer releases filtered</returns>
         [HttpGet("from-identifier/{identifier}")]
         public async Task<IActionResult> GetFromIdentifierAsync(string identifier)
         {
@@ -75,6 +89,11 @@ namespace ChustaSoft.Releasy.AspNetExample.Controllers
             }
         }
 
+        /// <summary>
+        /// Filter all newer releases information from a date
+        /// </summary>
+        /// <param name="dateFrom">Starting date from</param>
+        /// <returns>Collection with the newer releases filtered</returns>
         [HttpGet("from-date/{dateFrom}")]
         public async Task<IActionResult> GetFromDateAsync(DateTime dateFrom)
         {
