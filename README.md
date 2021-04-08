@@ -1,5 +1,16 @@
 # Releasy
 
+![GitHub](https://img.shields.io/github/license/ChustaSoft/Releasy)
+
+
+
+| Package                              | NuGet Version                                                                                                    |  Pipeline                                                                                                                                                                                                                                                                                 |    Downloads                                                                                  |
+|--------------------------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| ChustaSoft.Releasy                   | ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ChustaSoft.Releasy?style=for-the-badge)            | [![Build Status](https://dev.azure.com/chustasoft/SocialNET/_apis/build/status/OpenStack/Releasy/%5BRELEASE%5D%20-%20ChustaSoft%20Releasy%20(NuGet)?branchName=main)](https://dev.azure.com/chustasoft/SocialNET/_build/latest?definitionId=35&branchName=main)                           | ![Nuget](https://img.shields.io/nuget/dt/ChustaSoft.Releasy?style=for-the-badge)              |
+| ChustaSoft.Releasy.FileParser        | ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ChustaSoft.Releasy.FileParser?style=for-the-badge) | [![Build Status](https://dev.azure.com/chustasoft/SocialNET/_apis/build/status/OpenStack/Releasy/%5BRELEASE%5D%20-%20ChustaSoft%20Releasy%20FileParser%20(NuGet)?branchName=main)](https://dev.azure.com/chustasoft/SocialNET/_build/latest?definitionId=36&branchName=main)              | ![Nuget](https://img.shields.io/nuget/dt/ChustaSoft.Releasy.FileParser?style=for-the-badge)   |
+| ChustaSoft.Releasy.AspNet            | ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ChustaSoft.Releasy.AspNet?style=for-the-badge)     | [![Build Status](https://dev.azure.com/chustasoft/SocialNET/_apis/build/status/OpenStack/Releasy/%5BRELEASE%5D%20-%20ChustaSoft%20Releasy%20AspNet%20(NuGet)?branchName=main)](https://dev.azure.com/chustasoft/SocialNET/_build/latest?definitionId=37&branchName=main)                  | ![Nuget](https://img.shields.io/nuget/dt/ChustaSoft.Releasy.AspNet?style=for-the-badge)       |
+
+
 ## Description
 
 Releasy is a tool for managing Release and versioning information for .Net Core applications.
