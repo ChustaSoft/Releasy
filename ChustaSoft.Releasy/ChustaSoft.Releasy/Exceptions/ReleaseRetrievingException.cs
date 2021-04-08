@@ -2,6 +2,9 @@
 
 namespace ChustaSoft.Releasy
 {
+    /// <summary>
+    /// Exception thrown by any internal error inside Releasy
+    /// </summary>
     public class ReleaseRetrievingException : Exception
     {
 
