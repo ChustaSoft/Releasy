@@ -1,0 +1,13 @@
+<table>
+  <tr *ngFor="let item of releaseInfo">
+    <td>
+      <div>
+        <h2>{{item.identifier}}</h2>
+        <h3>{{item.date | date}}</h3>
+        <ul>
+          <li *ngFor="let change of item.additions">{{change}}</li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+</table>

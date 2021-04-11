@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ChustaSoft.Releasy.AspNetExample
+namespace ChustaSoft.Releasy.AspNetAngularExample
 {
     public class Program
     {
