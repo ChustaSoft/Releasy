@@ -1,4 +1,5 @@
 ﻿using ChustaSoft.Common.Base;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ChustaSoft.Releasy.AspNetExample.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     public class ReleaseController : ApiControllerBase<ReleaseController>
     {

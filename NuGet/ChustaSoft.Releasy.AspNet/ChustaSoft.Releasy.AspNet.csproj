@@ -9,7 +9,7 @@
     <Authors>Xelit3</Authors>
     <Company>ChustaSoft</Company>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <Version>1.0.0-beta.5</Version>
+    <Version>1.0.0-beta.6</Version>
     <FileVersion>1.0.0</FileVersion>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <PackageProjectUrl>https://github.com/ChustaSoft/Releasy</PackageProjectUrl>
@@ -26,6 +26,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChustaSoft.Releasy\ChustaSoft.Releasy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer">
+      <Version>3.1.14</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer">
+      <Version>5.0.5</Version>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
