@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace ChustaSoft.Releasy.AspNetExample.Controllers
 {
-    [ApiController]
     [Authorize]
     [Route("api/[controller]")]
     public class ReleaseController : ApiControllerBase<ReleaseController>
