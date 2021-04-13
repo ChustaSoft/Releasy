@@ -46,7 +46,7 @@ Implementations:
 
 4.1 Using Services:
 
-  1. Inject IReleaseService contract where is required, it provides the following methods:
+  1. Inject [IReleaseService](https://github.com/ChustaSoft/Releasy/blob/main/NuGet/ChustaSoft.Releasy/Contracts/IReleaseService.cs) contract where is required, it provides the following methods:
      - Task<ReleaseInfo> Get(string identifier);
      - Task<IEnumerable<ReleaseInfo>> GetAll();
      - Task<IEnumerable<ReleaseInfo>> GetFrom(DateTime dateFrom);
