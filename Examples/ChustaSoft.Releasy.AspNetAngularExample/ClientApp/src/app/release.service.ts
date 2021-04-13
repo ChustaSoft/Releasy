@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { BasicAuthentication } from '@chustasoft/cs-common';
+import { BasicAuthentication, JwtAuthentication } from '@chustasoft/cs-common';
 import { ReleaseInfoService } from '@chustasoft/cs-releasy-connector';
 
 @Injectable({
@@ -7,9 +7,15 @@ import { ReleaseInfoService } from '@chustasoft/cs-releasy-connector';
 })
 export class ReleaseService extends ReleaseInfoService {
 
-  getAuthentication(): string | BasicAuthentication {
-    return "";
+  //Example with BasicAuthentication
+  getAuthentication(): JwtAuthentication | BasicAuthentication {
+    return { username: "XXX", password: "YYY" } as BasicAuthentication;
   }
+
+  //Example with JwtAuthentication
+  //getAuthentication(): JwtAuthentication | BasicAuthentication {
+  //  return { token: "encrypted-token" } as JwtAuthentication;
+  //}
 
   constructor(@Inject('BASE_URL') baseUrl: string)
   {

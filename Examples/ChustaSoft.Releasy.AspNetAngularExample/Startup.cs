@@ -27,7 +27,6 @@ namespace ChustaSoft.Releasy.AspNetAngularExample
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddReleasy().FromFile();
-            services.AddMvc().AddReleaseController();
         }
 
         
