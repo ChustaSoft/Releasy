@@ -4,12 +4,12 @@
 
 
 
-| Package                              | Pipeline                                                                                                                                                                                                                                                                        |  NuGet version                                                                                                             |    Downloads                                                                                  |
-|--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| ChustaSoft.Releasy                   | [![Build Status](https://dev.azure.com/chustasoft/SocialNET/_apis/build/status/OpenStack/Releasy/%5BRELEASE%5D%20-%20ChustaSoft%20Releasy%20(NuGet)?branchName=main)](https://dev.azure.com/chustasoft/SocialNET/_build/latest?definitionId=35&branchName=main)                 | ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ChustaSoft.Releasy?style=for-the-badge)                      | ![Nuget](https://img.shields.io/nuget/dt/ChustaSoft.Releasy?style=for-the-badge)              |
-| ChustaSoft.Releasy.FileParser        | [![Build Status](https://dev.azure.com/chustasoft/SocialNET/_apis/build/status/OpenStack/Releasy/%5BRELEASE%5D%20-%20ChustaSoft%20Releasy%20FileParser%20(NuGet)?branchName=main)](https://dev.azure.com/chustasoft/SocialNET/_build/latest?definitionId=36&branchName=main)    | ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ChustaSoft.Releasy.FileParser?style=for-the-badge)           | ![Nuget](https://img.shields.io/nuget/dt/ChustaSoft.Releasy.FileParser?style=for-the-badge)   |
-| ChustaSoft.Releasy.AspNet            | [![Build Status](https://dev.azure.com/chustasoft/SocialNET/_apis/build/status/OpenStack/Releasy/%5BRELEASE%5D%20-%20ChustaSoft%20Releasy%20AspNet%20(NuGet)?branchName=main)](https://dev.azure.com/chustasoft/SocialNET/_build/latest?definitionId=37&branchName=main)        | ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ChustaSoft.Releasy.AspNet?style=for-the-badge)               | ![Nuget](https://img.shields.io/nuget/dt/ChustaSoft.Releasy.AspNet?style=for-the-badge)       |
-
+| Package                              | Pipeline                                                                                                                                                                                                                                                                             |  NuGet version                                                                                                             |    Downloads                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| ChustaSoft.Releasy                   | [![Build Status](https://dev.azure.com/chustasoft/SocialNET/_apis/build/status/OpenStack/Releasy/%5BRELEASE%5D%20-%20ChustaSoft%20Releasy%20(NuGet)?branchName=main)](https://dev.azure.com/chustasoft/SocialNET/_build/latest?definitionId=35&branchName=main)                      | ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ChustaSoft.Releasy?style=for-the-badge)                      | ![Nuget](https://img.shields.io/nuget/dt/ChustaSoft.Releasy?style=for-the-badge)              |
+| ChustaSoft.Releasy.FileParser        | [![Build Status](https://dev.azure.com/chustasoft/SocialNET/_apis/build/status/OpenStack/Releasy/%5BRELEASE%5D%20-%20ChustaSoft%20Releasy%20FileParser%20(NuGet)?branchName=main)](https://dev.azure.com/chustasoft/SocialNET/_build/latest?definitionId=36&branchName=main)         | ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ChustaSoft.Releasy.FileParser?style=for-the-badge)           | ![Nuget](https://img.shields.io/nuget/dt/ChustaSoft.Releasy.FileParser?style=for-the-badge)   |
+| ChustaSoft.Releasy.AspNet            | [![Build Status](https://dev.azure.com/chustasoft/SocialNET/_apis/build/status/OpenStack/Releasy/%5BRELEASE%5D%20-%20ChustaSoft%20Releasy%20AspNet%20(NuGet)?branchName=main)](https://dev.azure.com/chustasoft/SocialNET/_build/latest?definitionId=37&branchName=main)             | ![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/ChustaSoft.Releasy.AspNet?style=for-the-badge)               | ![Nuget](https://img.shields.io/nuget/dt/ChustaSoft.Releasy.AspNet?style=for-the-badge)       |
+| cs-releasy-connector                 | [![Build Status](https://dev.azure.com/chustasoft/SocialNET/_apis/build/status/OpenStack/Releasy/%5BRELEASE%5D%20-%20ChustaSoft%20releasy-connector%20(npm)?branchName=rc-branch)](https://dev.azure.com/chustasoft/SocialNET/_build/latest?definitionId=39&branchName=rc-branch)    | ![npm](https://img.shields.io/npm/v/@chustasoft/cs-releasy-connector?style=for-the-badge)                                  | ![npm](https://img.shields.io/npm/dt/@chustasoft/cs-releasy-connector?style=for-the-badge)    |
 
 ## Description
 
@@ -73,8 +73,9 @@ Implementations:
 	 
   2. Extend service, defining the Base Url, and implementing the required Auth Headers
   
-  2.1: Basic Authentication example:
-	  `import { Inject, Injectable } from '@angular/core';
+	  2.1: Basic Authentication example:
+	  `
+	   import { Inject, Injectable } from '@angular/core';
 	   import { BasicAuthentication, JwtAuthentication } from '@chustasoft/cs-common';
 	   import { ReleaseInfoService } from '@chustasoft/cs-releasy-connector';
 
@@ -90,7 +91,8 @@ Implementations:
 	   constructor(@Inject('BASE_URL') baseUrl: string)
 	   {
 		 super(baseUrl + 'api');
-	   }`
+	   }
+	   `
 
 ### Examples and testing	
  
