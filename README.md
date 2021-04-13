@@ -56,18 +56,27 @@ Implementations:
 
   1. Install the AspNet package: 
      - Install-Package ChustaSoft.Releasy.AspNet
-  2. Add required configuration using the same ImvcBuilder from AspNetCore:
-     - `services.AddMvc().AddReleaseController();`
-  3. Once done, a REST controller will be added to the project giving the same functionalities described for the Service, using the same configured 
+  2. Once done, a REST controller will be added to the project giving the same functionalities described for the Service, using the same configured 
      authentication in the project, with the following routes:
 	 - /api/Release: Provide all release versioning entries
 	 - /api/Release/{identifier}: Provide information for an speceific release version
 	 - /api/Release/from-identifier/{identifier}: Given a version, provide all release details about all newer versions
 	 - ​/api​/Release​/from-date​/{dateFrom}: Provide all the release details from an specific date
+	 
+5. Using frontend connector
+
+  Releasy provides an npm package that can be used in any front project, written in TypeScript. This connector only requires to implement an abstract services
+  requiring the api endpoint, and the security headers (Perhaps you are using JWT Token, or Basic Authentication). Let's imagine that the project requires JWT:
+  
+  1. Install the npm package:
+     - npm i @chustasoft/cs-releasy-connector 
+	 
+  2. Extend service, defining the Base Url, and implementing the required Auth Headers
+  ``
 
 ### Examples and testing	
  
-- Do you still need an example? [Here](https://github.com/ChustaSoft/Releasy/tree/main/ChustaSoft.Releasy/ChustaSoft.Releasy.AspNetExample) you can find it.
+- Do you still need an example? [Here](https://github.com/ChustaSoft/Releasy/tree/main/Examples/ChustaSoft.Releasy.AspNetAngularExample) you can find it.
 - Swagger or Postman is recommended in development process, in order to facilitate seeing results, but not mandatory.
 
 

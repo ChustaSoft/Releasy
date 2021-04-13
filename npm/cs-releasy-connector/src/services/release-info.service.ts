@@ -1,4 +1,4 @@
-import { BasicAuthentication, HttpService } from '@chustasoft/cs-common'
+import { BasicAuthentication, HttpService, JwtAuthentication } from '@chustasoft/cs-common'
 import { ReleaseInfo } from '..';
 
 export abstract class ReleaseInfoService {
@@ -34,7 +34,7 @@ export abstract class ReleaseInfoService {
     }
 
 
-    public abstract getAuthentication(): string | BasicAuthentication;
+    public abstract getAuthentication(): JwtAuthentication | BasicAuthentication;
     
 
     private getFilterUrlPart(filter: string | Date): string {
