@@ -92,8 +92,7 @@ Implementations:
 	{
 		super(baseUrl + 'api');
 	}
- }
-`
+`}
 
 ### Examples and testing	
  
