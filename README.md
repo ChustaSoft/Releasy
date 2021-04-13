@@ -74,24 +74,25 @@ Implementations:
   2. Extend service, defining the Base Url, and implementing the required Auth Headers
   
 	  2.1: Basic Authentication example:
-	  `import { Inject, Injectable } from '@angular/core';
-	   import { BasicAuthentication, JwtAuthentication } from '@chustasoft/cs-common';
-	   import { ReleaseInfoService } from '@chustasoft/cs-releasy-connector';
+	  
+		`import { Inject, Injectable } from '@angular/core';
+		import { BasicAuthentication, JwtAuthentication } from '@chustasoft/cs-common';
+		import { ReleaseInfoService } from '@chustasoft/cs-releasy-connector';
 
-	   @Injectable({
+		@Injectable({
 		  providedIn: 'root'
-	   })
+		})
 		  export class ReleaseService extends ReleaseInfoService {
 
-	   getAuthentication(): JwtAuthentication | BasicAuthentication {
+		getAuthentication(): JwtAuthentication | BasicAuthentication {
 		  return { username: "XXX", password: "YYY" } as BasicAuthentication;
-	   }
+		}
 
-	   constructor(@Inject('BASE_URL') baseUrl: string)
-	   {
+		constructor(@Inject('BASE_URL') baseUrl: string)
+		{
 		 super(baseUrl + 'api');
-	   }
-	   `
+		}
+		`
 
 ### Examples and testing	
  
