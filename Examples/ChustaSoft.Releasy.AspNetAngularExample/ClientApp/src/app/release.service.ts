@@ -9,12 +9,12 @@ export class ReleaseService extends ReleaseInfoService {
 
   //Example with BasicAuthentication
   getAuthentication(): JwtAuthentication | BasicAuthentication {
-    return { username: "XXX", password: "YYY" } as BasicAuthentication;
+    return new BasicAuthentication("username", "user-password");
   }
 
   //Example with JwtAuthentication
   //getAuthentication(): JwtAuthentication | BasicAuthentication {
-  //  return { token: "encrypted-token" } as JwtAuthentication;
+  //  return new JwtAuthentication("encrypted-token");
   //}
 
   constructor(@Inject('BASE_URL') baseUrl: string)

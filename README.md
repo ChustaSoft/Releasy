@@ -86,7 +86,7 @@ Implementations:
 		export class ReleaseService extends ReleaseInfoService {
 
 			getAuthentication(): JwtAuthentication | BasicAuthentication {
-				return { username: "XXX", password: "YYY" } as BasicAuthentication;
+				return new BasicAuthentication("username", "user-password");
 			}
 
 			constructor(@Inject('BASE_URL') baseUrl: string)
@@ -109,7 +109,7 @@ Implementations:
 		export class ReleaseService extends ReleaseInfoService {
 
 			getAuthentication(): JwtAuthentication | BasicAuthentication {
-				return { token: "encrypted-token" } as JwtAuthentication;
+				return new JwtAuthentication("encrypted-token");
 			}
 
 			constructor(@Inject('BASE_URL') baseUrl: string)
