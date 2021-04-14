@@ -1,6 +1,6 @@
 {
   "name": "@chustasoft/cs-releasy-connector",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "JS connector library for ChustaSoft Releasy backend project, providing easy access to REST features",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -27,6 +27,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@chustasoft/cs-common": "1.2.1-beta.1"
+    "@chustasoft/cs-common": "1.2.1"
   }
 }
