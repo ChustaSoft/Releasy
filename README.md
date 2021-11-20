@@ -129,5 +129,3 @@ Implementations:
 *Thanks for using and contributing*
 ---
 [![Twitter Follow](https://img.shields.io/twitter/follow/ChustaSoft?label=Follow%20us&style=social)](https://twitter.com/ChustaSoft)
-
-	
