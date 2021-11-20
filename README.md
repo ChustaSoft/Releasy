@@ -20,6 +20,7 @@ It provides an abstract mechanims for retrieving information about Releases such
 *Target support:*
 - .Net Core 3.1
 - .NET 5.0
+- .NET 6.0
 
 Implementations:
 - File parsing (ChustaSoft.Releasy.FileParser)
@@ -128,5 +129,3 @@ Implementations:
 *Thanks for using and contributing*
 ---
 [![Twitter Follow](https://img.shields.io/twitter/follow/ChustaSoft?label=Follow%20us&style=social)](https://twitter.com/ChustaSoft)
-
-	
