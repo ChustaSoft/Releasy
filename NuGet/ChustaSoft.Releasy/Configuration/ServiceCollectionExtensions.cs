@@ -12,22 +12,11 @@ namespace ChustaSoft.Releasy.Configuration
         /// <returns>IServiceCollection</returns>
         public static IReleasyConfigurationBuilder AddReleasy(this IServiceCollection services) 
         {
-            var configurationBuilder = new ReleasyConfigurationBuilder(services);           
+            var configurationBuilder = new ReleasyConfigurationBuilder(services);
+
+            configurationBuilder.Services.AddTransient<IChangelogService, ChangelogService>();
 
             return configurationBuilder;
-        }
-
-
-        internal static void ConfigureForSingleFile(this IReleasyConfigurationBuilder configurationBuilder) 
-        {
-            configurationBuilder.Services.AddTransient<ISingleChangelogService, SingleChangelogService>();
-            configurationBuilder.Services.AddTransient<IMultipleChangelogService, NullMultipleChangelogService>();
-        }
-
-        internal static void ConfigureForMultipleFiles(this IReleasyConfigurationBuilder configurationBuilder)
-        {
-            configurationBuilder.Services.AddTransient<ISingleChangelogService, NullSingleChangelogService>();
-            configurationBuilder.Services.AddTransient<IMultipleChangelogService, MultipleChangelogService>();
         }
 
     }

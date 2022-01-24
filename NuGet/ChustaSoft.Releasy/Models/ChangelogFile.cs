@@ -35,24 +35,48 @@ namespace ChustaSoft.Releasy
         }
 
 
+        /// <summary>
+        /// Indexer that looks for an specific release identifier
+        /// </summary>
+        /// <param name="identifier">Release identifier</param>
+        /// <returns>Release information model</returns>
         public ReleaseInfo this[string identifier] => Get(identifier);
 
 
+        /// <summary>
+        /// Looks for an specific release identifier
+        /// </summary>
+        /// <param name="identifier">Release identifier</param>
+        /// <returns>Release information model</returns>
         public ReleaseInfo Get(string identifier) 
         {
             return ReleasesInfo.First(x => x.Identifier == identifier);
         }
 
+        /// <summary>
+        /// Retrieves all the Release information available in the system
+        /// </summary>        
+        /// <returns>Release information collection retrived</returns>
         public IEnumerable<ReleaseInfo> GetAll()
         {
             return ReleasesInfo.OrderByDescending(x => x.Date);
         }
 
+        /// <summary>
+        /// Retrieves all the latest Release information available from a specific date
+        /// </summary>
+        /// <param name="dateFrom">Date from retrieve latest ones</param>
+        /// <returns>Release information collection retrived</returns>
         public IEnumerable<ReleaseInfo> GetFrom(DateTime dateFrom)
         {
             return PerformGetFromDate(dateFrom);
         }
 
+        /// <summary>
+        /// Retrieves all the latest Release information available from a specific release identifier
+        /// </summary>
+        /// <param name="identifierFrom">Release identifier from retrieve latest ones</param>
+        /// <returns>Release information collection retrived</returns>
         public IEnumerable<ReleaseInfo> GetFrom(string identifierFrom)
         {
             var dateFrom = ReleasesInfo.First(x => x.Identifier == identifierFrom).Date;
