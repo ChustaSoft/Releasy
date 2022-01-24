@@ -15,10 +15,10 @@ namespace ChustaSoft.Releasy.Configuration
         /// <returns></returns>
         public static IReleasyConfigurationBuilder FromFile(this IReleasyConfigurationBuilder builder, string fileName = FileParserConstants.DEFAULT_CHANGELOG_FILENAME)
         {
-            var settings = new FileParserSettings(fileName);
+            //var settings = new FileParserSettings();
 
             builder.Services.AddMemoryCache();
-            builder.Services.AddSingleton(settings);
+            //builder.Services.AddSingleton(settings);
             builder.Services.AddTransient<IReleaseRepository, ReleaseFileParser>();
 
             return builder;

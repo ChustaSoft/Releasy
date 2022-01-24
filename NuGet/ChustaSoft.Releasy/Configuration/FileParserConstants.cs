@@ -1,4 +1,4 @@
-﻿namespace ChustaSoft.Releasy.Configuration
+﻿namespace ChustaSoft.Releasy
 {
     internal static class FileParserConstants
     {

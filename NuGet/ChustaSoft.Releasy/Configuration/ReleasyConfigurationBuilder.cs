@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace ChustaSoft.Releasy.Configuration
+namespace ChustaSoft.Releasy
 {
     public class ReleasyConfigurationBuilder : IReleasyConfigurationBuilder
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace ChustaSoft.Releasy.Configuration
+namespace ChustaSoft.Releasy
 {
     public static class ServiceCollectionExtensions
     {
@@ -14,7 +14,8 @@ namespace ChustaSoft.Releasy.Configuration
         {
             var configurationBuilder = new ReleasyConfigurationBuilder(services);
 
-            configurationBuilder.Services.AddTransient<IReleaseService, ReleaseService>();
+            //TODO: Resolve implementations, take into account NullObjectPattern for ISingle and IMultiple
+            //configurationBuilder.Services.AddTransient<IReleaseService, ReleaseService>();
 
             return configurationBuilder;
         }

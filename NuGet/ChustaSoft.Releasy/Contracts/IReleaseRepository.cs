@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace ChustaSoft.Releasy
 {
     public interface IReleaseRepository
     {
 
-        Task<IEnumerable<ReleaseInfo>> Load();
+        Task<ChangelogFile> Get(string fileName = FileParserConstants.DEFAULT_CHANGELOG_FILENAME);
 
     }
 }

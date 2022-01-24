@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ChustaSoft.Releasy.Models
+namespace ChustaSoft.Releasy
 {
     /// <summary>
     /// Unreleased changes section
