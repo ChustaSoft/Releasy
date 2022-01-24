@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace ChustaSoft.Releasy
+namespace ChustaSoft.Releasy.Configuration
 {
     public static class ServiceCollectionExtensions
     {
@@ -14,10 +14,21 @@ namespace ChustaSoft.Releasy
         {
             var configurationBuilder = new ReleasyConfigurationBuilder(services);
 
-            //TODO: Resolve implementations, take into account NullObjectPattern for ISingle and IMultiple
-            //configurationBuilder.Services.AddTransient<IReleaseService, ReleaseService>();
+           
 
             return configurationBuilder;
+        }
+
+
+        internal static void ConfigureForSingleFile(this IReleasyConfigurationBuilder builder) 
+        {
+            //TODO: Resolve implementations, take into account NullObjectPattern for ISingle and IMultiple
+            //configurationBuilder.Services.AddTransient<IReleaseService, ReleaseService>();
+        }
+
+        internal static void ConfigureForMultipleFiles(this IReleasyConfigurationBuilder builder)
+        {
+
         }
 
     }

@@ -1,5 +1,4 @@
-﻿using ChustaSoft.Releasy.FileParser;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace ChustaSoft.Releasy.Configuration
 {
@@ -13,13 +12,13 @@ namespace ChustaSoft.Releasy.Configuration
         /// <param name="builder">Existing builder from Releasy Configuration</param>
         /// <param name="fileName">Optiona, changelog.md by default, allow the project to configure a custom release notes file name</param>
         /// <returns></returns>
-        public static IReleasyConfigurationBuilder FromFile(this IReleasyConfigurationBuilder builder, string fileName = FileParserConstants.DEFAULT_CHANGELOG_FILENAME)
+        public static IReleasyConfigurationBuilder FromFile(this IReleasyConfigurationBuilder builder, string fileName = ReleasyConstants.DEFAULT_CHANGELOG_FILENAME)
         {
-            //var settings = new FileParserSettings();
+            var settings = new LocalChangelogSettings(ReleasyConstants.DEFAULT_CHANGELOG_KEY, fileName);
 
             builder.Services.AddMemoryCache();
-            //builder.Services.AddSingleton(settings);
-            builder.Services.AddTransient<IReleaseRepository, ReleaseFileParser>();
+            builder.Services.AddSingleton<IChangelogSettings>(settings);
+            builder.Services.AddTransient<IChangelogRepository, LocalChangelogFileParser>();
 
             return builder;
         }

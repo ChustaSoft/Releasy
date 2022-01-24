@@ -1,3 +1,4 @@
+using ChustaSoft.Releasy.Configuration;
 using NUnit.Framework;
 using System;
 using System.Linq;
@@ -8,20 +9,23 @@ namespace ChustaSoft.Releasy.FileParser.Tests
     public class ReleaseFileParserTests
     {
 
-        private ReleaseFileParser ServiceUnderTest;
+        private LocalChangelogFileParser ServiceUnderTest;
 
-
+        
         [SetUp]
         public void Setup()
         {
-            ServiceUnderTest = new ReleaseFileParser(new ChangelogTextParser());
+            ServiceUnderTest = new LocalChangelogFileParser(
+                new LocalChangelogSettings(ReleasyConstants.DEFAULT_CHANGELOG_KEY, ReleasyConstants.DEFAULT_CHANGELOG_FILENAME),
+                new ChangelogTextParser()
+                );
         }
 
       
         [Test]
         public async Task Given_ReleasePlainText_When_Load_Then_ReleasesRetrived()
         {
-            var result = await ServiceUnderTest.Get();
+            var result = await ServiceUnderTest.GetAsync(ReleasyConstants.DEFAULT_CHANGELOG_KEY);
 
             Assert.AreEqual(12, result.ReleasesInfo.Count());
 
@@ -149,7 +153,7 @@ namespace ChustaSoft.Releasy.FileParser.Tests
         [Test]
         public void Given_Wrongchangelog_When_Load_Then_ReleaseRetrievingExceptionThrown()
         {
-            Assert.ThrowsAsync<ReleaseRetrievingException>(() => ServiceUnderTest.Get("wrongfile.md"));
+            Assert.ThrowsAsync<ReleaseRetrievingException>(() => ServiceUnderTest.GetAsync("wrongfile.md"));
         }
 
     }
