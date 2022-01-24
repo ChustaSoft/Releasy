@@ -19,6 +19,8 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "cs-releasy-connector", "npm
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{140FE056-D0A4-4814-BF09-6D6C0679505D}"
 	ProjectSection(SolutionItems) = preProject
+		changelog.md = changelog.md
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
