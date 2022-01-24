@@ -1,4 +1,5 @@
 ﻿using ChustaSoft.Releasy.Configuration;
+using Microsoft.Extensions.Caching.Memory;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,15 +29,17 @@ namespace ChustaSoft.Releasy
 
     public class ChangelogService : IChangelogService
     {
-        
+
         private readonly IChangelogSettings _changelogSettings;
         private readonly IChangelogRepository _changelogRepository;
+        private readonly IMemoryCache _cache;
 
-        
-        public ChangelogService(IChangelogSettings changelogSettings, IChangelogRepository changelogRepository)
+
+        public ChangelogService(IChangelogSettings changelogSettings, IChangelogRepository changelogRepository, IMemoryCache cache)
         {
             _changelogSettings = changelogSettings;
             _changelogRepository = changelogRepository;
+            _cache = cache;
         }
 
 
@@ -53,6 +56,13 @@ namespace ChustaSoft.Releasy
 
         private async Task<ChangelogFile> PerformGetAsync(string fileKey)
         {
+            ChangelogFile changelogFile = null;
+            if (!_cache.TryGetValue(fileKey, out changelogFile))
+            {
+                changelogFile = await _changelogRepository.GetAsync(fileKey);
+
+                _cache.Set(fileKey, changelogFile);
+            }
             return await _changelogRepository.GetAsync(fileKey);
         }
 

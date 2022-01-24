@@ -13,13 +13,13 @@ namespace ChustaSoft.Releasy.AspNetExample.Controllers
     public class ReleaseController : ApiControllerBase<ReleaseController>
     {
 
-        private readonly IReleaseService _releaseService;
+        private readonly IChangelogService _changelogService;
 
 
-        public ReleaseController(ILogger<ReleaseController> logger, IReleaseService releaseService)
+        public ReleaseController(ILogger<ReleaseController> logger, IChangelogService changelogService)
             : base(logger)
         {
-            _releaseService = releaseService;
+            _changelogService = changelogService;
         }
 
 
@@ -33,8 +33,8 @@ namespace ChustaSoft.Releasy.AspNetExample.Controllers
             var responseBuilder = GetEmptyResponseBuilder<IEnumerable<ReleaseInfo>>();
             try
             {
-                var data = await _releaseService.GetAll();
-                responseBuilder.SetData(data);
+                var changelog = await _changelogService.GetAsync();
+                responseBuilder.SetData(changelog.ReleasesInfo);
 
                 return Ok(responseBuilder);
             }
@@ -55,8 +55,8 @@ namespace ChustaSoft.Releasy.AspNetExample.Controllers
             var responseBuilder = GetEmptyResponseBuilder<ReleaseInfo>();
             try
             {
-                var data = await _releaseService.Get(identifier);
-                responseBuilder.SetData(data);
+                var changelog = await _changelogService.GetAsync();
+                responseBuilder.SetData(changelog[identifier]);
 
                 return Ok(responseBuilder);
             }
@@ -78,8 +78,8 @@ namespace ChustaSoft.Releasy.AspNetExample.Controllers
             var responseBuilder = GetEmptyResponseBuilder<IEnumerable<ReleaseInfo>>();
             try
             {
-                var data = await _releaseService.GetFrom(identifier);
-                responseBuilder.SetData(data);
+                var changelog = await _changelogService.GetAsync();
+                responseBuilder.SetData(changelog.GetFrom(identifier));
 
                 return Ok(responseBuilder);
             }
@@ -100,8 +100,8 @@ namespace ChustaSoft.Releasy.AspNetExample.Controllers
             var responseBuilder = GetEmptyResponseBuilder<IEnumerable<ReleaseInfo>>();
             try
             {
-                var data = await _releaseService.GetFrom(dateFrom);
-                responseBuilder.SetData(data);
+                var changelog = await _changelogService.GetAsync();
+                responseBuilder.SetData(changelog.GetFrom(dateFrom));
 
                 return Ok(responseBuilder);
             }
