@@ -20,6 +20,8 @@ namespace ChustaSoft.Releasy.Configuration
             builder.Services.AddSingleton<IChangelogSettings>(settings);
             builder.Services.AddTransient<IChangelogRepository, LocalChangelogFileParser>();
 
+            builder.ConfigureForSingleFile();
+
             return builder;
         }
 

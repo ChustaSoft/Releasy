@@ -13,8 +13,8 @@
 		<FileVersion>1.1.0</FileVersion>
 		<AssemblyVersion>1.1.0</AssemblyVersion>
 		<PackageProjectUrl>https://github.com/ChustaSoft/Releasy</PackageProjectUrl>
-		<PackageLicenseUrl>https://github.com/ChustaSoft/Releasy/blob/master/LICENSE</PackageLicenseUrl>
-		<PackageReleaseNotes>https://github.com/ChustaSoft/Releasy/changelog.md</PackageReleaseNotes>
+		<PackageLicenseUrl>https://github.com/ChustaSoft/Releasy/blob/main/LICENSE</PackageLicenseUrl>
+		<PackageReleaseNotes>https://github.com/ChustaSoft/Releasy/blob/main/changelog.md</PackageReleaseNotes>
 		<RepositoryUrl>https://github.com/ChustaSoft/Releasy.git</RepositoryUrl>
 		<RepositoryType>GIT</RepositoryType>
 		<PackageTags>Utilities;Helpers;changelog;Release Notes;Release Manager;Versioning</PackageTags>
