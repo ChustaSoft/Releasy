@@ -21,7 +21,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="ChustaSoft.Common" Version="2.2.0" />
+		<PackageReference Include="ChustaSoft.Common" Version="2.4.0" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
