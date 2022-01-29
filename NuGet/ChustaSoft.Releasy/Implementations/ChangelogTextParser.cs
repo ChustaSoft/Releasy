@@ -17,6 +17,7 @@ namespace ChustaSoft.Releasy
     {
 
         private const string STARTING_TEXT = "## [Releases]";
+        private const string UNRELEASED_SECTION_TEXT = "## [Unreleased]";
         private const string RELEASE_START_TEXT = "\n## ";
         private const string HEADER_INFO_SEPARATOR = " - ";
         private const string CHANGES_BLOCK_SEPARATOR = "### ";
@@ -39,10 +40,11 @@ namespace ChustaSoft.Releasy
             return new ChangelogFile(releases);
         }
 
-        internal string[] GetReleaseLines(string text)
+
+        internal string[] GetReleaseLines(string changelogText)
         {
-            var startingIndex = text.IndexOf(STARTING_TEXT) + STARTING_TEXT.Length;
-            var releasesTextList = text.Substring(startingIndex).Split(RELEASE_START_TEXT, StringSplitOptions.RemoveEmptyEntries);
+            var startingIndex = changelogText.IndexOf(STARTING_TEXT) + STARTING_TEXT.Length;
+            var releasesTextList = changelogText.Substring(startingIndex).Split(RELEASE_START_TEXT, StringSplitOptions.RemoveEmptyEntries);
 
             return releasesTextList;
         }
@@ -53,6 +55,11 @@ namespace ChustaSoft.Releasy
             var changes = GetChanges(releaseText);
 
             return new ReleaseInfo(headerInfo.Version, headerInfo.Date, changes);
+        }
+
+        internal bool HasUnreleasedSection(string changelogText) 
+        {
+            return changelogText.Contains(UNRELEASED_SECTION_TEXT);
         }
 
         internal (string Version, DateTime Date) GetReleaseHeader(string releaseText)
