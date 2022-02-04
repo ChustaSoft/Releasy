@@ -10,7 +10,7 @@ namespace ChustaSoft.Releasy.Configuration
         public IEnumerable<string> FileKeys => _dictionary.Keys;
 
 
-        public string this[string key] => _dictionary[key];
+        internal string this[string key] => _dictionary[key];
 
 
         public LocalChangelogSettings(string fileKey, string fileName)

@@ -29,7 +29,7 @@ namespace ChustaSoft.Releasy
             }
             catch (Exception ex)
             {
-                throw new ReleaseRetrievingException(ex);
+                throw new ChangelogRetrievingException(ex);
             }
         }
 

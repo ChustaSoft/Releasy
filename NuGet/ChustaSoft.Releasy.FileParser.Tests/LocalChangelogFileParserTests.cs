@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChustaSoft.Releasy.FileParser.Tests
 {
-    public class ReleaseFileParserTests
+    public class LocalChangelogFileParserTests
     {
 
         private LocalChangelogFileParser ServiceUnderTest;
@@ -183,7 +183,7 @@ namespace ChustaSoft.Releasy.FileParser.Tests
         [Test]
         public void Given_Wrongchangelog_When_Load_Then_ReleaseRetrievingExceptionThrown()
         {
-            Assert.ThrowsAsync<ReleaseRetrievingException>(() => ServiceUnderTest.GetAsync("wrongfile.md"));
+            Assert.ThrowsAsync<ChangelogRetrievingException>(() => ServiceUnderTest.GetAsync("wrongfile.md"));
         }
 
     }

@@ -21,7 +21,7 @@ namespace ChustaSoft.Releasy
         private const string RELEASE_START_TEXT = "\n## ";
         private const string HEADER_INFO_SEPARATOR = " - ";
         private const string CHANGES_BLOCK_SEPARATOR = "### ";
-        private const string CHANGETYPE_LINE_START = "\r\n";
+        private string[] CHANGETYPE_LINE_STARTS = { "\r\n", "\n\n", "\n" };
         private const char NEW_LINE = '\n';
         private const char HEADER_VERSION_START = '[';
         private const char HEADER_VERSION_END = ']';
@@ -32,7 +32,7 @@ namespace ChustaSoft.Releasy
         public ChangelogFile Parse(string text)
         {
             var unreleasedSection = TryExtractUnreleasedSection(ref text);
-            var releases = TryExtractReleasesDictionary(text);
+            var releases = TryExtractReleasesDictionary(text).ToList();
 
             return new ChangelogFile(unreleasedSection, releases);
         }
@@ -120,7 +120,7 @@ namespace ChustaSoft.Releasy
 
         private IEnumerable<string> GetTypeLines(string typeText)
         {
-            var allLines = typeText.Split(CHANGETYPE_LINE_START, StringSplitOptions.RemoveEmptyEntries);
+            var allLines = typeText.Split(CHANGETYPE_LINE_STARTS, StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 1; i < allLines.Length; i++) 
             {
