@@ -16,37 +16,38 @@ namespace ChustaSoft.Releasy
     public class ChangelogTextParser : IChangelogTextParser
     {
 
-        private const string STARTING_TEXT = "## [Releases]";
         private const string UNRELEASED_SECTION_TEXT = "## [Unreleased]";
+        private const string RELEASES_STARTING_TEXT = "## [";
         private const string RELEASE_START_TEXT = "\n## ";
         private const string HEADER_INFO_SEPARATOR = " - ";
         private const string CHANGES_BLOCK_SEPARATOR = "### ";
-        private const string CHANGETYPE_LINE_START = "\n- ";
+        private const string CHANGETYPE_LINE_START = "\r\n";
         private const char NEW_LINE = '\n';
         private const char HEADER_VERSION_START = '[';
         private const char HEADER_VERSION_END = ']';
         private const char EMPTY_CHARACTER = ' ';
-        private const int MIN_CHANGETYPE_LINE_LENGTH = 2;
+        private const string CHANGE_LINE_ELEMENT = "- ";
 
 
         public ChangelogFile Parse(string text)
         {
-            var releaseTextLines = GetReleaseLines(text);
-            var releases = new List<ReleaseInfo>();
+            var unreleasedSection = TryExtractUnreleasedSection(ref text);
+            var releases = TryExtractReleasesDictionary(text);
 
-            for (int i = 1; i < releaseTextLines.Length; i++)
-                releases.Add(ParseReleaseText(releaseTextLines[i]));
-
-            return new ChangelogFile(releases);
+            return new ChangelogFile(unreleasedSection, releases);
         }
-
 
         internal string[] GetReleaseLines(string changelogText)
         {
-            var startingIndex = changelogText.IndexOf(STARTING_TEXT) + STARTING_TEXT.Length;
+            var startingIndex = changelogText.IndexOf(RELEASES_STARTING_TEXT) + RELEASES_STARTING_TEXT.Length - 1;
             var releasesTextList = changelogText.Substring(startingIndex).Split(RELEASE_START_TEXT, StringSplitOptions.RemoveEmptyEntries);
 
             return releasesTextList;
+        }
+
+        internal bool HasUnreleasedSection(string changelogText) 
+        {
+            return changelogText.Contains(UNRELEASED_SECTION_TEXT);
         }
 
         internal ReleaseInfo ParseReleaseText(string releaseText)
@@ -55,11 +56,6 @@ namespace ChustaSoft.Releasy
             var changes = GetChanges(releaseText);
 
             return new ReleaseInfo(headerInfo.Version, headerInfo.Date, changes);
-        }
-
-        internal bool HasUnreleasedSection(string changelogText) 
-        {
-            return changelogText.Contains(UNRELEASED_SECTION_TEXT);
         }
 
         internal (string Version, DateTime Date) GetReleaseHeader(string releaseText)
@@ -96,11 +92,45 @@ namespace ChustaSoft.Releasy
 
         private IEnumerable<string> GetTypeLines(string typeText)
         {
-            var allLines = typeText.Split(CHANGETYPE_LINE_START);
+            var allLines = typeText.Split(CHANGETYPE_LINE_START, StringSplitOptions.RemoveEmptyEntries);
 
-            for (int i = 1; i < allLines.Length; i++)
-                if (allLines[i].Length > MIN_CHANGETYPE_LINE_LENGTH)
-                    yield return allLines[i].TrimStart().TrimEnd();
+            for (int i = 1; i < allLines.Length; i++) 
+            {
+                if (allLines[i].Contains(CHANGE_LINE_ELEMENT)) 
+                {
+                    var line = allLines[i].TrimStart().TrimEnd()[1..];
+
+                    if(!string.IsNullOrWhiteSpace(line))
+                        yield return line;
+                }
+            }   
+        }
+
+        private UnreleasedInfo TryExtractUnreleasedSection(ref string text)
+        {
+            UnreleasedInfo unreleasedSection = null;
+
+            if (HasUnreleasedSection(text))
+            {
+                var startIndex = text.IndexOf(UNRELEASED_SECTION_TEXT);
+                var endIndex = text.IndexOf(RELEASES_STARTING_TEXT, startIndex + 1);
+                var unreleasedSectionString = text.Substring(startIndex, endIndex - startIndex);
+                var changes = GetChanges(unreleasedSectionString);
+
+                text = text.Replace(unreleasedSectionString, string.Empty);
+
+                unreleasedSection = new UnreleasedInfo(changes);
+            }
+
+            return unreleasedSection;
+        }
+
+        private IEnumerable<ReleaseInfo> TryExtractReleasesDictionary(string text)
+        {
+            var releaseTextLines = GetReleaseLines(text);
+
+            for (int i = 0; i < releaseTextLines.Length; i++)
+                yield return ParseReleaseText(releaseTextLines[i]);
         }
 
     }

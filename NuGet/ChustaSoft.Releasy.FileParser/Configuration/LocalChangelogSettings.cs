@@ -1,5 +1,4 @@
-﻿using ChustaSoft.Releasy.Configuration;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ChustaSoft.Releasy.Configuration
 {
@@ -16,11 +15,19 @@ namespace ChustaSoft.Releasy.Configuration
 
         public LocalChangelogSettings(string fileKey, string fileName)
         {
-            Add(fileKey, fileName);
+            PerformAddFileSettings(fileKey, fileName);
         }
 
 
-        public void Add(string fileKey, string fileName) 
+        public LocalChangelogSettings Add(string fileKey, string fileName)
+        {
+            PerformAddFileSettings(fileKey, fileName);
+
+            return this;
+        }
+
+
+        private void PerformAddFileSettings(string fileKey, string fileName)
         {
             _dictionary.Add(fileKey, fileName);
         }

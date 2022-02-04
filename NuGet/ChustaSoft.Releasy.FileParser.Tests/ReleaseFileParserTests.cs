@@ -11,22 +11,52 @@ namespace ChustaSoft.Releasy.FileParser.Tests
 
         private LocalChangelogFileParser ServiceUnderTest;
 
-        
+        private const string WITH_UNRELEASED_KEY = "with-unreleased";
+        private const string WITHOUT_UNRELEASED_KEY = "without-unreleased";
+
+
         [SetUp]
         public void Setup()
         {
             ServiceUnderTest = new LocalChangelogFileParser(
-                new LocalChangelogSettings(ReleasyConstants.DEFAULT_CHANGELOG_KEY, ReleasyConstants.DEFAULT_CHANGELOG_FILENAME),
+                new LocalChangelogSettings(WITHOUT_UNRELEASED_KEY, "changelog-without-unreleased.md")
+                    .Add(WITH_UNRELEASED_KEY, "changelog-with-unreleased.md"),
                 new ChangelogTextParser()
                 );
         }
 
-      
-        [Test]
-        public async Task Given_ReleasePlainText_When_Load_Then_ReleasesRetrived()
-        {
-            var result = await ServiceUnderTest.GetAsync(ReleasyConstants.DEFAULT_CHANGELOG_KEY);
 
+        [Test]
+        public async Task Given_PlainTextChangelogFileWithUnreleasedSection_When_Load_Then_ReleasesRetrived()
+        {
+            var result = await ServiceUnderTest.GetAsync(WITH_UNRELEASED_KEY);
+            
+            PerformUnreleasedAsserts(result);
+            PerformReleasesAsserts(result);
+        }       
+
+        [Test]
+        public async Task Given_PlainTextChangelogFileWithoutUnreleasedSection_When_Load_Then_ReleasesRetrived()
+        {
+            var result = await ServiceUnderTest.GetAsync(WITHOUT_UNRELEASED_KEY);
+
+            PerformReleasesAsserts(result);
+        }
+
+
+        private static void PerformUnreleasedAsserts(ChangelogFile result)
+        {
+            Assert.IsNotNull(result.UnreleasedInfo);
+            Assert.AreEqual(2, result.UnreleasedInfo.Additions.Count());
+            Assert.AreEqual(0, result.UnreleasedInfo.Changes.Count());
+            Assert.AreEqual(0, result.UnreleasedInfo.Eliminated.Count());
+            Assert.AreEqual(0, result.UnreleasedInfo.Deprecations.Count());
+            Assert.AreEqual(1, result.UnreleasedInfo.Fixes.Count());
+            Assert.AreEqual(0, result.UnreleasedInfo.Secured.Count());
+        }
+
+        private static void PerformReleasesAsserts(ChangelogFile result)
+        {
             Assert.AreEqual(12, result.ReleasesInfo.Count());
 
             var version100 = result.ReleasesInfo.First(x => x.Identifier == "1.0.0");

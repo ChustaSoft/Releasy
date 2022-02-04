@@ -16,8 +16,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="changelog.md">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		<None Update="changelog-with-unreleased.md">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="changelog-without-unreleased.md">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 

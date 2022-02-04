@@ -23,11 +23,6 @@ namespace ChustaSoft.Releasy
         public IEnumerable<ReleaseInfo> ReleasesInfo { get; private set; }
 
 
-        public ChangelogFile(IEnumerable<ReleaseInfo> releasesInfo)
-        {
-            ReleasesInfo = releasesInfo;
-        }
-
         public ChangelogFile(UnreleasedInfo unreleasedInfo, IEnumerable<ReleaseInfo> releasesInfo)
         {
             UnreleasedInfo = unreleasedInfo;
