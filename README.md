@@ -18,9 +18,7 @@ Releasy is a tool for managing Release and versioning information for .Net Core 
 It provides an abstract mechanims for retrieving information about Releases such as Version, Notes and Release Date
 
 *Target support:*
-- .Net Core 3.1
-- .NET 5.0
-- .NET 6.0
+- .NET 6.0 onwards
 
 Implementations:
 - File parsing (ChustaSoft.Releasy.FileParser)
