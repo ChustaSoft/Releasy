@@ -60,7 +60,7 @@ namespace ChustaSoft.Releasy.FileParser
             return releasesTextList;
         }
 
-        internal ReleaseInfo ParseReleaseText(string releaseText) 
+        internal ReleaseInfo ParseReleaseText(string releaseText)
         {
             var headerInfo = GetReleaseHeader(releaseText);
             var changes = GetChanges(releaseText);
@@ -68,7 +68,7 @@ namespace ChustaSoft.Releasy.FileParser
             return new ReleaseInfo(headerInfo.Version, headerInfo.Date, changes);
         }
 
-        internal (string Version, DateTime Date) GetReleaseHeader(string releaseText) 
+        internal (string Version, DateTime Date) GetReleaseHeader(string releaseText)
         {
             var headerText = releaseText.Substring(0, releaseText.IndexOf(NEW_LINE));
             var lines = headerText.Split(HEADER_INFO_SEPARATOR);
@@ -85,14 +85,14 @@ namespace ChustaSoft.Releasy.FileParser
 
             for (int i = 1; i < changesBlocks.Length; i++)
             {
-                foreach (var type in EnumsHelper.GetEnumList<ChangeType>()) 
+                foreach (var type in EnumsHelper.GetEnumList<ChangeType>())
                 {
                     if (changesBlocks[i].StartsWith(type.ToString()))
                     {
                         var lines = GetTypeLines(changesBlocks[i]).ToList();
 
                         dictionary.Add(type, lines);
-                    }                        
+                    }
                 }
             }
 
@@ -105,7 +105,7 @@ namespace ChustaSoft.Releasy.FileParser
             var allLines = typeText.Split(CHANGETYPE_LINE_START);
 
             for (int i = 1; i < allLines.Length; i++)
-                if(allLines[i].Length > MIN_CHANGETYPE_LINE_LENGTH)
+                if (allLines[i].Length > MIN_CHANGETYPE_LINE_LENGTH)
                     yield return allLines[i].TrimStart().TrimEnd();
         }
 

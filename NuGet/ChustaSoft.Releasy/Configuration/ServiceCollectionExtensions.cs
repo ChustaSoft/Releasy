@@ -10,7 +10,7 @@ namespace ChustaSoft.Releasy.Configuration
         /// </summary>
         /// <param name="services">Services container</param>
         /// <returns>IServiceCollection</returns>
-        public static IReleasyConfigurationBuilder AddReleasy(this IServiceCollection services) 
+        public static IReleasyConfigurationBuilder AddReleasy(this IServiceCollection services)
         {
             var configurationBuilder = new ReleasyConfigurationBuilder(services);
 

@@ -69,7 +69,7 @@ namespace ChustaSoft.Releasy
         }
 
 
-        private IEnumerable<string> GetTypeChanges(ChangeType type) 
+        private IEnumerable<string> GetTypeChanges(ChangeType type)
         {
             if (_releaseChanges.ContainsKey(type))
                 return _releaseChanges[type];

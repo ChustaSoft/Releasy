@@ -52,10 +52,10 @@ namespace ChustaSoft.Releasy
         }
 
 
-        private async Task<IEnumerable<ReleaseInfo>> Load() 
+        private async Task<IEnumerable<ReleaseInfo>> Load()
         {
             var releases = Enumerable.Empty<ReleaseInfo>();
-            if (!_cache.TryGetValue(CACHE_KEY_DATA, out releases)) 
+            if (!_cache.TryGetValue(CACHE_KEY_DATA, out releases))
             {
                 releases = await _releaseRepository.Load();
 
